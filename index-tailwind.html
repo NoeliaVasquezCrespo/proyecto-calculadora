@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Proyecto Calculadora</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-600 min-h-screen flex flex-col items-center justify-start pt-10">
+
+  <h1 class="text-white text-2xl font-semibold mb-6"> Proyecto - Calculadora </h1>
+
+  <div class="bg-blue-900 w-80 p-4 rounded-2xl shadow-lg flex flex-col gap-3">
+
+    <section>
+      <h6 class="flex justify-between text-white pb-3">
+        <span>Casio</span>
+        <span>fx-82MS</span>
+      </h6>
+
+      <input type="text" class="calculator__history bg-green-200 text-right px-3 py-1 w-full rounded-t-xl text-sm"
+        disabled>
+      <input type="text" class="calculator__display bg-green-200 text-right px-3 py-3 w-full rounded-b-xl text-2xl"
+        disabled value="0">
+    </section>
+
+
+    <!-- Botones -->
+    <section class="grid grid-cols-4 gap-3 mt-2">
+
+      <button class="calculator__button col-span-1 bg-red-500 text-white rounded-lg py-3 active:bg-red-700">c</button>
+      <button class="calculator__button bg-blue-600 text-white rounded-lg py-3 active:bg-blue-800">÷</button>
+      <button class="calculator__button bg-blue-600 text-white rounded-lg py-3 active:bg-blue-800">x</button>
+      <button class="calculator__button bg-blue-600 text-white rounded-lg py-3 active:bg-blue-800">-</button>
+
+      <button class="calculator__button bg-slate-700 text-white rounded-lg py-3 hover:bg-blue-600">7</button>
+      <button class="calculator__button bg-slate-700 text-white rounded-lg py-3 hover:bg-blue-600">8</button>
+      <button class="calculator__button bg-slate-700 text-white rounded-lg py-3 hover:bg-blue-600">9</button>
+      <button class="calculator__button row-span-2 bg-blue-600 text-white rounded-lg py-3 active:bg-blue-800">+</button>
+
+      <button class="calculator__button bg-slate-700 text-white rounded-lg py-3 hover:bg-blue-600">4</button>
+      <button class="calculator__button bg-slate-700 text-white rounded-lg py-3 hover:bg-blue-600">5</button>
+      <button class="calculator__button bg-slate-700 text-white rounded-lg py-3 hover:bg-blue-600">6</button>
+
+      <button class="calculator__button bg-slate-700 text-white rounded-lg py-3 hover:bg-blue-600">1</button>
+      <button class="calculator__button bg-slate-700 text-white rounded-lg py-3 hover:bg-blue-600">2</button>
+      <button class="calculator__button bg-slate-700 text-white rounded-lg py-3 hover:bg-blue-600">3</button>
+      <button class="calculator__button row-span-2 bg-green-600 text-white rounded-lg py-3 active:bg-green-800">=</button>
+
+      <button class="calculator__button col-span-2 bg-slate-700 text-white rounded-lg py-3 hover:bg-blue-600">0</button>
+      <button class="calculator__button bg-slate-700 text-white rounded-lg py-3 hover:bg-blue-600">.</button>
+
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

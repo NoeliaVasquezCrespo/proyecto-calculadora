@@ -7,7 +7,6 @@ const historyPanel = document.querySelector('.history-panel');
 
 const operationsHistory = [];
 
-
 let currentNumber = '';
 let previousNumber = '';
 let operator = null;
@@ -52,9 +51,14 @@ function calculate() {
 
   const operationText = `${previousNumber} ${operator} ${currentNumber} = ${result}`;
   operationsHistory.push(operationText);
+  localStorage.setItem('operationsHistory', JSON.stringify(operationsHistory));
+  
   updateHistoryList();
+  applyResult(result);
+}
 
-  updateHistory(`${previousNumber} ${operator} ${currentNumber}`);
+function applyResult(result) {
+ updateHistory(`${previousNumber} ${operator} ${currentNumber}`);
   currentNumber = result.toString();
   previousNumber = '';
   operator = null;
@@ -62,9 +66,13 @@ function calculate() {
   updateDisplay();
 }
 
+function loadHistoryData() {
+  operationsHistory.push(...JSON.parse(localStorage.getItem('operationsHistory') || '[]'));
+  updateHistoryList();
+}
+
 function updateHistoryList() {
   historyTable.innerHTML = '';
-
   operationsHistory.forEach((operation, index) => {
     const row = document.createElement('tr');
     row.innerHTML = `
@@ -74,11 +82,9 @@ function updateHistoryList() {
   });
 }
 
-
 toggleHistoryBtn.addEventListener('click', () => {
   historyPanel.classList.toggle('hidden');
 });
-
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
@@ -91,7 +97,6 @@ buttons.forEach(button => {
 
     if (['+', '-', 'x', '÷'].includes(value)) {
       if (currentNumber === '') return;
-
 
       if (operator !== null) {
         calculate();
@@ -175,6 +180,13 @@ document.addEventListener('keydown', e => {
   if (key === 'Backspace') {
     deleteLastNumber();
   }
+  
 
+  if (key === 'Escape') {
+    clearCalculator();
+    localStorage.removeItem('operationsHistory');
+  }
 
 });
+
+loadHistoryData();

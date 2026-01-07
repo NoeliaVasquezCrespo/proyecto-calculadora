@@ -78,3 +78,37 @@ h1 {
 .calculator__button--zero {
     grid-column: span 2;
 }
+
+.history-panel {
+  background: #024242;
+  padding: 1rem;
+  border-radius: 1em;
+  width: 20em;
+  color: white;
+  margin: 1rem auto;
+}
+
+.history-panel table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history-panel th,
+.history-panel td {
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 0.9em;
+}
+
+.hidden {
+  display: none;
+}
+
+.toggle-history {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5em;
+  border: none;
+  cursor: pointer;
+}

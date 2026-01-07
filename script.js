@@ -1,6 +1,12 @@
 const display = document.querySelector('.calculator__display');
 const historyDisplay = document.querySelector('.calculator__history');
 const buttons = document.querySelectorAll('.calculator__button');
+const historyTable = document.querySelector('#historyTable');
+const toggleHistoryBtn = document.querySelector('.toggle-history');
+const historyPanel = document.querySelector('.history-panel');
+
+const operationsHistory = [];
+
 
 let currentNumber = '';
 let previousNumber = '';
@@ -44,6 +50,10 @@ function calculate() {
     default: return;
   }
 
+  const operationText = `${previousNumber} ${operator} ${currentNumber} = ${result}`;
+  operationsHistory.push(operationText);
+  updateHistoryList();
+
   updateHistory(`${previousNumber} ${operator} ${currentNumber}`);
   currentNumber = result.toString();
   previousNumber = '';
@@ -51,6 +61,24 @@ function calculate() {
   resultHistory = true;
   updateDisplay();
 }
+
+function updateHistoryList() {
+  historyTable.innerHTML = '';
+
+  operationsHistory.forEach((operation, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${operation}</td>
+    `;
+    historyTable.appendChild(row);
+  });
+}
+
+
+toggleHistoryBtn.addEventListener('click', () => {
+  historyPanel.classList.toggle('hidden');
+});
+
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
